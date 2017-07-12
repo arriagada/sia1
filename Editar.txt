@@ -1,0 +1,23 @@
+   private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                FrmRegistroCliente FrmC = new FrmRegistroCliente();
+                FrmC.txtDni.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                FrmC.txtApellidos.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                FrmC.txtNombres.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                FrmC.txtDireccion.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                FrmC.txtTelefono.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                FrmC.txtDni.Focus();
+                FrmC.Show();
+                if (dataGridView1.SelectedRows.Count > 0)
+                    Program.Evento = 1;
+                else
+                    Program.Evento = 0;
+                dataGridView1.ClearSelection();
+            }
+            else {
+                DevComponents.DotNetBar.MessageBoxEx.Show("Por Favor Seleccione la Fila a Editar.","Sistema de Ventas.",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            ListarClientes();
+        }
